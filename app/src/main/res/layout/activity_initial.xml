@@ -6,7 +6,7 @@
     tools:context=".NatalActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_natal"
+        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -16,29 +16,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
             android:padding="20dp"
             android:text="@string/qr_code_natal"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="22sp" />
-
-        <ImageView
-            android:id="@+id/iv_movie"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_below="@id/tv_title"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            tools:src="@drawable/ic_launcher_background" />
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/tv_content"
-            android:layout_below="@+id/iv_movie"
             android:layout_width="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:padding="40dp"
-            android:text="@string/o_pr_ximo_qr_code_se_encontra_em_tal_lugar_e_possui_a_cor_vermelha"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/procure_pela_casa_qr_codes_com_a_c_mera"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="22sp" />
@@ -48,11 +38,11 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/bt_back"
+                android:id="@+id/bt_search"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="@string/procurar_o_pr_ximo"
 
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="80dp"
@@ -60,12 +50,13 @@
                 android:background="@color/colorPrimary"
                 android:gravity="bottom"
                 android:padding="25dp"
+                android:text="@string/iniciar"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textSize="20sp" />
         </RelativeLayout>
 
-
     </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

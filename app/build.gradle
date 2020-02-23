@@ -33,6 +33,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.0'
     implementation 'com.google.firebase:firebase-ml-vision:21.0.0'
 
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
     def camerax_version = "1.0.0-alpha03"
     implementation "androidx.camera:camera-core:${camerax_version}"

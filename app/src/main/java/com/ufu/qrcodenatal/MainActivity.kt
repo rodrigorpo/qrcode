@@ -1,103 +1,29 @@
 package com.ufu.qrcodenatal
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.view.TextureView
-import android.widget.Toast
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.*
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.LifecycleOwner
 
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        private const val REQUEST_CAMERA_PERMISSION = 10
-    }
 
-    private lateinit var textureView: TextureView
-    private var isRead = false
-
-    override fun onResume() {
-        isRead = false
-        super.onResume()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        textureView = findViewById(R.id.texture_view)
-        textureView.isOpaque = false
+        setContentView(R.layout.activity_initial)
 
-        if (isCameraPermissionGranted()) {
-            textureView.post { startCamera() }
-        } else {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.CAMERA),
-                REQUEST_CAMERA_PERMISSION
-            )
-        }
+        val btnStart = findViewById<Button>(R.id.bt_search)
+        btnStart.setOnClickListener(clickListener)
     }
 
-    private fun startCamera() {
-        val previewConfig = PreviewConfig.Builder()
-            // We want to show input from back camera of the device
-            .setLensFacing(CameraX.LensFacing.BACK)
-            .build()
+    private val clickListener = View.OnClickListener { goToCameraActivity() }
 
-        val preview = Preview(previewConfig)
-
-        preview.setOnPreviewOutputUpdateListener { previewOutput ->
-            textureView.surfaceTexture = previewOutput.surfaceTexture
-        }
-
-        val imageAnalysisConfig = ImageAnalysisConfig.Builder()
-            .build()
-        val imageAnalysis = ImageAnalysis(imageAnalysisConfig)
-
-        val qrCodeAnalyzer = QrCodeAnalyzer { qrCodes ->
-            qrCodes.forEach {
-                if (!isRead)
-                    goToNatalActivity(it.rawValue ?: "")
-            }
-        }
-
-        imageAnalysis.analyzer = qrCodeAnalyzer
-        CameraX.bindToLifecycle(this as LifecycleOwner, preview, imageAnalysis)
-    }
-
-    private fun isCameraPermissionGranted(): Boolean {
-        val selfPermission =
-            ContextCompat.checkSelfPermission(baseContext, Manifest.permission.CAMERA)
-        return selfPermission == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == REQUEST_CAMERA_PERMISSION) {
-            if (isCameraPermissionGranted()) {
-                textureView.post { startCamera() }
-            } else {
-                Toast.makeText(this, "Camera permission is required.", Toast.LENGTH_SHORT).show()
-                finish()
-            }
-        }
-    }
-
-    private fun goToNatalActivity(hash: String) {
-        isRead = true
-        Log.d("MainActivity", "QR Code detected: ${hash}.")
-        val intent = Intent(this, NatalActivity::class.java)
-        intent.putExtra("HASH", hash)
+    private fun goToCameraActivity() {
+        Log.d("MainActivity", "Clicked on button")
+        val intent = Intent(this, CameraActivity::class.java)
         startActivity(intent)
-
     }
 }

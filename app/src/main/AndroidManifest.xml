@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NatalActivity"></activity>
+        <activity android:name=".NatalActivity" />
+        <activity android:name=".CameraActivity" />
+        <activity android:name=".FinalActivity" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"

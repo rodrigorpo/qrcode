@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">QrCodeNatal</string>
+    <string name="teste">teste</string>
+    <string name="preview">Preview</string>
+    <string name="title">Title</string>
+    <string name="o_pr_ximo_qr_code_se_encontra_em_tal_lugar_e_possui_a_cor_vermelha">O próximo QR code se encontra em tal lugar e possui a cor vermelha</string>
+    <string name="qr_code_natal">QR Code Natal</string>
+    <string name="come_ar">Começar</string>
+    <string name="procure_pela_casa_qr_codes_com_a_c_mera">Procure pela casa QR Codes com a câmera</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="voltar">Voltar</string>
+    <string name="procurar_o_pr_ximo">Procurar o próximo</string>
+    <string name="espero_que_tenha_gostado_da_brincadeira">Espero que tenha gostado da brincadeira ;)</string>
+    <string name="feliz_natal_v_zinho">Feliz natal, vôzinho!</string>
+    <string name="fim">Fim!!!</string>
 </resources>
